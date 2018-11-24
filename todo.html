@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>initially</title>
+</head>
+
+<body>
+  <div id="app">
+    <ul>
+      <li v-for="item in items">
+        <label v-bind:class="{done:item.isChecked}">
+          <input type="checkbox" v-model="item.isChecked"> {{item.title}}
+        </label>
+      </li>
+    </ul>
+
+    <!-- input field -->
+    <p>
+      <input  type="text"
+              placeholder="Plese input what to do here!"
+              v-model="newItemTitle"
+              v-on:keyup.enter="makeTodo(newItemTitle)">
+    </p>
+
+    <!-- delete button -->
+    <button v-on:click="deleteItem()">Delete checked</button>
+  </div>
+
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <script src="./todo.js"></script>
+</body>
+
+<style>
+  .done {text-decoration: line-through;}
+</style>
+</html>
