@@ -4,28 +4,34 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>initially</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
 
 <body>
   <div id="app">
-    <ul>
-      <li v-for="item in items">
-        <label v-bind:class="{done:item.isChecked}">
-          <input type="checkbox" v-model="item.isChecked"> {{item.title}}
-        </label>
-      </li>
-    </ul>
+    <div class="container">
+      <ul class="list list-group">
+        <li class="list-group-item list-group-item-primary">TODO LIST</li>
+        <li class="list-group-item" v-for="item in items">
+          <label v-bind:class="{done:item.isChecked}">
+            <input type="checkbox" v-model="item.isChecked"> {{item.title}}
+          </label>
+        </li>
+      </ul>
+    </div>
 
-    <!-- input field -->
-    <p>
-      <input  type="text"
-              placeholder="Plese input what to do here!"
-              v-model="newItemTitle"
-              v-on:keyup.enter="makeTodo(newItemTitle)">
-    </p>
-
-    <!-- delete button -->
-    <button v-on:click="deleteItem()">Delete checked</button>
+    <div class="fixed-bottom">
+      <div class="container">
+        <!-- input field -->
+        <div class="form-group">
+          <input  type="text" class="form-control" placeholder="What to do ?"
+          v-model="newItemTitle" v-on:keyup.enter="makeTodo(newItemTitle)">
+        </div>
+        
+        <!-- delete button -->
+        <button v-on:click="deleteItem()" class="btn btn-block btn-danger">Delete checked</button>
+      </div>
+    </div>
   </div>
 
   <script src="https://unpkg.com/vue/dist/vue.js"></script>
@@ -33,6 +39,7 @@
 </body>
 
 <style>
+  .list {margin-bottom: 30px;}
   .done {text-decoration: line-through;}
 </style>
 </html>
